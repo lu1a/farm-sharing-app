@@ -44,6 +44,9 @@ X-Internal-Token: <internal_token>
 The internal token will be designed to update every so often and post itself into a telegram channel or similar to be copied, then applied into the separate frontend of this app. The frontend is meant to be used by as little users on each farm as possible, to prevent leaks (ie. one would be able to view the resources of all other connections via this API).
 <br />
 The inter-farm token should probably update itself too, and then a farm will be responsible to PATCH that new token to its frontend, and connected farms' `/api/connections/:our-farm-id` endpoint.
+<br />
+<br />
+Did I mention that ideally the farms should be connected in a closed physical WAN? 😁😏
 
 # Contributing
 
