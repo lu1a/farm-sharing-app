@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  db:
+    image: mariadb:10.5
+    platform: linux/amd64
+    restart: unless-stopped
+    environment:
+      - MARIADB_ROOT_PASSWORD=kissa123
+    hostname: db
+    domainname: localhost
+    working_dir: /docker-entrypoint-initdb.d
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
