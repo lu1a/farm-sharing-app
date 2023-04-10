@@ -21,13 +21,13 @@ TODO. For now just install cargo then cargo run this. Remember that Rocket uses 
 | `/api/resources` GET                          | Returns a list of all resources                                                                                                |
 | `/api/requests` GET                           | Returns a list of all requests this farm has (w/ params to specify open/closed/all, etc.)                                      |
 | `/api/requests` POST                          | Create a request to this farm                                                                                                  |
-| `/api/requests:id` DELETE                     | Delete a request from this farm (accessible by internal/creator of the request only)                                           |
+| `/api/requests/:id` DELETE                     | Delete a request from this farm (accessible by internal/creator of the request only)                                           |
 | `/api/resources/:id` GET, POST, PATCH, DELETE | CRUD on the details of a specific resource (set) identified by :id (connected farms may only GET; POST doesn't require an :id) |
 | `/api/connections` GET                        | Returns a list of all connected farms (each connected farm can only get/edit/delete its own entry in our connections list)     |
 | `/api/connections` POST                       | Add a new connected farm (internal access only)                                                                                |
 | `/api/connections/:id` GET, PATCH, DELETE     | More CRUD on a connected farm (each connected farm can only get/edit/delete its own entry in our connections list)             |
 
-Then, with every other farm that we have connected, we can use their side of these `/api/xyz` endpoints which are accessible to us.
+Then, with every other farm that we have connected, we can use their side of these `/api/xyz` endpoints which are accessible to us. Maybe I'll make a passthrough local endpoint which points to a connected farm's endpoints.
 
 ## Authorization
 
