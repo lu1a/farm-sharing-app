@@ -1,6 +1,7 @@
 use chrono::NaiveDateTime;
+use serde::Serialize;
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Serialize)]
 pub struct FarmDetail {
     pub id: i32,
     pub name: String,

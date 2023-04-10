@@ -53,20 +53,7 @@ fn health() -> RawJson<String> {
 #[get("/api/details")]
 async fn get_details(db: Connection<DBRepo>) -> RawJson<String> {
     let farm_details_list = get_farm_details(db).await.unwrap();
-
-    if farm_details_list.len() == 0 {
-        println!("Uh oh! No details yet.");
-    } else {
-        println!("{}", farm_details_list[0].name);
-        println!("-----------\n");
-        match &farm_details_list[0].description {
-            // The division was valid
-            Some(x) => println!("Description: {x}"),
-            // The division was invalid
-            None => println!("No description"),
-        }
-    }
-    RawJson("".to_string())
+    RawJson(serde_json::to_string(&farm_details_list).unwrap())
 }
 
 #[launch]
