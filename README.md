@@ -21,7 +21,7 @@ TODO. For now just install cargo then cargo run this. Remember that Rocket uses 
 | `/api/resources` GET                          | Returns a list of all resources                                                                                                |
 | `/api/requests` GET                           | Returns a list of all requests this farm has (w/ params to specify open/closed/all, etc.)                                      |
 | `/api/requests` POST                          | Create a request to this farm                                                                                                  |
-| `/api/requests/:id` DELETE                     | Delete a request from this farm (accessible by internal/creator of the request only)                                          |
+| `/api/requests/:id` DELETE                    | Delete a request from this farm (accessible by internal/creator of the request only)                                           |
 | `/api/resources/:id` GET, POST, PATCH, DELETE | CRUD on the details of a specific resource (set) identified by :id (connected farms may only GET; POST doesn't require an :id) |
 | `/api/connections` GET                        | Returns a list of all connected farms (each connected farm can only get/edit/delete its own entry in our connections list)     |
 | `/api/connections` POST                       | Add a new connected farm (internal access only)                                                                                |
@@ -51,3 +51,7 @@ Did I mention that ideally the farms should be connected in a closed physical WA
 # Contributing
 
 Contributions are welcome! Feel free to open an issue or pull request if you have any suggestions or improvements to the API.
+
+# Further implementation ideas
+
+- What about people who want to join the network but can't be trusted to see everyone's produce, IP addresses, etc? It would be cool to have secondary farms/houses which a 1st party farm could have connect to them, in a way that the 2nd party farm can only make requests to the 1st party one who auto-forwards it to the other 1st party farms. So if I'm a 1st party farm and I want my good friend Bob to be connected to the network, but the rest of the farms don't know him, then my farm could act as an "opaque passthrough" and his requests only interact with my farm IP address. This way if Bob is a Fed, he can only take me down with him and not the whole network.
