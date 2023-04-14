@@ -11,7 +11,7 @@ A farm will create a static Auth key for other farms to save and use when queryi
 
 # Installation
 
-TODO. For now just install cargo then cargo run this. Remember that Rocket uses nightly Rust.
+TODO. For now just install cargo then cargo run this.
 
 # Endpoints
 
