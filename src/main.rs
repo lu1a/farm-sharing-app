@@ -62,21 +62,32 @@ fn rocket() -> _ {
     rocket::build()
         .mount(
             "/",
+            // TODO: fix this huge list,
+            // make the router auto-pick all functions in the /api files
             routes![
                 index,
                 favicon,
                 health,
                 api::details::get_details,
                 api::details::patch_details,
+                /*
+                    ↓ Other saved farms endpoints!
+                */
                 api::connections::get_all_connections,
                 api::connections::post_connection,
                 api::connections::get_connection,
                 api::connections::patch_connection,
                 api::connections::delete_connection,
+                /*
+                    ↓ Requests made to farms endpoints!
+                */
                 api::requests::get_all_requests,
                 api::requests::post_request,
                 api::requests::get_request,
                 api::requests::delete_request,
+                /*
+                    ↓ Resource endpoints!
+                */
                 api::resources::get_all_resources,
                 api::resources::post_resource,
                 api::resources::get_resource,
