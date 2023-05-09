@@ -1,7 +1,8 @@
 use chrono::NaiveDateTime;
 use serde::Serialize;
+use sqlx::FromRow;
 
-#[derive(Debug, PartialEq, Eq, Serialize)]
+#[derive(Debug, PartialEq, Eq, Serialize, FromRow)]
 pub struct FarmDetail {
     pub id: i32,
     pub name: String,
