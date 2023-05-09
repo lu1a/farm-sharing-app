@@ -6,7 +6,6 @@ use env_logger::Env;
 use log::info;
 use rocket::fs::NamedFile;
 use rocket::response::content::RawJson;
-use rocket_db_pools::Connection;
 use rocket_db_pools::{sqlx, Database};
 use serde::Serialize;
 use std::env;
@@ -14,7 +13,12 @@ use std::path::PathBuf;
 
 mod dbrepo;
 
-use dbrepo::get_farm_details;
+mod api {
+    pub mod connections;
+    pub mod details;
+    pub mod requests;
+    pub mod resources;
+}
 
 #[derive(Database)]
 #[database("cosmas")]
@@ -48,12 +52,6 @@ fn health() -> RawJson<String> {
     RawJson(json)
 }
 
-#[get("/api/details")]
-async fn get_details(db: Connection<DBRepo>) -> RawJson<String> {
-    let farm_details_list = get_farm_details(db).await.unwrap();
-    RawJson(serde_json::to_string(&farm_details_list).unwrap())
-}
-
 #[launch]
 fn rocket() -> _ {
     dotenv().ok();
@@ -62,6 +60,29 @@ fn rocket() -> _ {
     info!("...");
 
     rocket::build()
-        .mount("/", routes![index, favicon, health, get_details])
+        .mount(
+            "/",
+            routes![
+                index,
+                favicon,
+                health,
+                api::details::get_details,
+                api::details::patch_details,
+                api::connections::get_all_connections,
+                api::connections::post_connection,
+                api::connections::get_connection,
+                api::connections::patch_connection,
+                api::connections::delete_connection,
+                api::requests::get_all_requests,
+                api::requests::post_request,
+                api::requests::get_request,
+                api::requests::delete_request,
+                api::resources::get_all_resources,
+                api::resources::post_resource,
+                api::resources::get_resource,
+                api::resources::patch_resource,
+                api::resources::delete_resource,
+            ],
+        )
         .attach(DBRepo::init())
 }
