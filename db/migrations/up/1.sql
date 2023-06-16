@@ -1,11 +1,15 @@
-CREATE TABLE farm_details (
-  id INT NOT NULL AUTO_INCREMENT,
+CREATE DATABASE cosmas;
+
+ \c cosmas
+
+CREATE TABLE farm (
+  id SERIAL PRIMARY KEY,
+  is_me BOOLEAN NOT NULL DEFAULT false,
   name VARCHAR(255) NOT NULL,
   description TEXT,
-  joined_date DATETIME NOT NULL DEFAULT NOW(),
+  joined_date TIMESTAMP NOT NULL DEFAULT NOW(),
   address VARCHAR(255),
-  display_address BOOL NOT NULL DEFAULT true,
+  display_address BOOLEAN NOT NULL DEFAULT true,
   primary_produce VARCHAR(255),
-  website VARCHAR(255),
-  PRIMARY KEY (id)
+  website VARCHAR(255)
 );

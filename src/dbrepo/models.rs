@@ -3,7 +3,7 @@ use serde::Serialize;
 use sqlx::FromRow;
 
 #[derive(Debug, PartialEq, Eq, Serialize, FromRow)]
-pub struct FarmDetail {
+pub struct Farm {
     pub id: i32,
     pub name: String,
     pub description: Option<String>,

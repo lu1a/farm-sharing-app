@@ -17,4 +17,4 @@ sqlx = { version="0.6", features = [ "chrono" ] }
 
 [dependencies.rocket_db_pools]
 version = "=0.1.0-rc.3"
-features = ["sqlx_mysql"]
+features = ["sqlx_postgres"]

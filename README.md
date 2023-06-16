@@ -1,7 +1,7 @@
 # cosmas-api
 
 The backend for a Community Sharing Management Software:
-This is the backend API for a Community Sharing Management App, a platform where farms/communities/communes/homesteads/households can log their produce and inventory and see the inventories of other farms in the community. The API is built in Rust using the Rocket web framework, with a MariaDB database for storing farm data.
+This is the backend API for a Community Sharing Management App, a platform where farms/communities/communes/homesteads/households can log their produce and inventory and see the inventories of other farms in the community. The API is built in Rust using the Rocket web framework, with a Postgres database for storing farm data.
 <br />
 <br />
 The point is to share data and subsequently resources to your fellow connected farms, like how organs share, or how teams in companies share resources to fulfill a common goal. A farm might make a request to all its connected members, and the idea is that some other farm comes forth and shares if it can. Extra resources can and should be given to fellow farms rather than hoarding.
@@ -24,7 +24,7 @@ TODO. For now just install cargo then cargo run this.
 | `/api/requests/:id` DELETE                    | Delete a request from this farm (accessible by internal/creator of the request only)                                           |
 | `/api/resources/:id` GET, POST, PATCH, DELETE | CRUD on the details of a specific resource (set) identified by :id (connected farms may only GET; POST doesn't require an :id) |
 | `/api/connections` GET                        | Returns a list of all connected farms (each connected farm can only get/edit/delete its own entry in our connections list)     |
-| `/api/connections` POST                       | Add a new connected farm (internal access only)                                                                                |
+| `/api/connections` POST, PATCH, DELETE        | Operations on connected farms (internal access only)                                                                           |
 | `/api/connections/:id` GET, PATCH, DELETE     | More CRUD on a connected farm (each connected farm can only get/edit/delete its own entry in our connections list)             |
 
 Then, with every other farm that we have connected, we can use their side of these `/api/xyz` endpoints which are accessible to us. Maybe I'll make a passthrough local endpoint which points to a connected farm's endpoints.

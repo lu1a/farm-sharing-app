@@ -1,8 +1,12 @@
-use rocket::{delete, get, patch, post};
+use crate::dbrepo::db_get_all_connections;
+use crate::DBRepo;
+use rocket::{get, patch, post, delete, response::content::RawJson};
+use rocket_db_pools::Connection;
 
 #[get("/api/connections")]
-pub fn get_all_connections() -> &'static str {
-    "get_all_connections called!"
+pub async fn get_all_connections(db: Connection<DBRepo>) -> RawJson<String> {
+    let farm_details_list = db_get_all_connections(db).await.unwrap();
+    RawJson(serde_json::to_string(&farm_details_list).unwrap())
 }
 
 #[post("/api/connections")]

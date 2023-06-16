@@ -22,7 +22,7 @@ mod api {
 
 #[derive(Database)]
 #[database("cosmas")]
-pub struct DBRepo(sqlx::MySqlPool);
+pub struct DBRepo(sqlx::PgPool);
 
 #[derive(Serialize)]
 struct HealthResponse {
