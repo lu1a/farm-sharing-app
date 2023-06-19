@@ -29,21 +29,16 @@ TODO. For now just install cargo then cargo run this.
 
 Then, with every other farm that we have connected, we can use their side of these `/api/xyz` endpoints which are accessible to us. Maybe I'll make a passthrough local endpoint which points to a connected farm's endpoints.
 
-## Authorization
+## Authorisation and Encryption
 
-Every request to a given farm will use a Bearer token initially given manually in real life between the managers of this app on both farms.
-Additionally, each farm will internally have a custom auth header to indicate a user is "logged in" (with another manual key).
-<br />
-<code contenteditable="false">
-Authorization: Bearer <inter-farm_token>
-<br />
-X-Internal-Token: <internal_token>
-</code>
-<br />
-<br />
-The internal token will be designed to update every so often and post itself into a telegram channel or similar to be copied, then applied into the separate frontend of this app. The frontend is meant to be used by as little users on each farm as possible, to prevent leaks (ie. one would be able to view the resources of all other connections via this API).
-<br />
-The inter-farm token should probably update itself too, and then a farm will be responsible to PATCH that new token to its frontend, and connected farms' `/api/connections/:our-farm-id` endpoint.
+There are two requirements:
+1. Only authorised farms can send and recieve data from each other.
+1. All data over the wire must be encrypted.
+
+It would be cool if authorisation happened at the same time as encryption. Like, a farm needs to first physically put in some RSA key to the other farms,
+then all request bodies to the new farm would be encrypted one way. If decrypting an incoming msg doesn't work, then the sender inherently isn't authed!
+Whenever generating a new set of keys, a farm would be responsible to PATCH a new pub/priv/whatever key to connected farms' `/api/connections/:our-farm-id` endpoint.
+🤔 I wonder if that makes sense!
 <br />
 <br />
 Did I mention that ideally the farms should be connected in a closed physical WAN? 😁😏
