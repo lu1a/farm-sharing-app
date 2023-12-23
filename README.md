@@ -4,7 +4,7 @@
 I'm going to refactor this to be an all-in-1 app. I wrote this as a CRUD API originally just so that it'd be self-evident what each endpoint does and that it's an abstraction over the CRUD actions of a database anyway. I'm feeling HTMX for the "frontend".
 Anyway, here's the abstract:
 
-# Abstract
+### Abstract
 
 The backend for a Community Sharing Management Software:
 This is the backend API for a Community Sharing Management App, a platform where farms/communities/communes/homesteads/households can log their produce and inventory and see the inventories of other farms in the community. The API is built in Rust using the Rocket web framework, with a Postgres database for storing farm data.
