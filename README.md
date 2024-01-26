@@ -1,7 +1,7 @@
 # cosmas-api
 
 ### Note from future me:
-I'm going to refactor this to be an all-in-1 app. I wrote this as a CRUD API originally just so that it'd be self-evident what each endpoint does and that it's a layer over the CRUD actions of a database anyway. I'm feeling HTMX for the "frontend".
+I'm going to refactor this to be an all-in-1 app. I wrote this as a CRUD API originally just so that it'd be self-evident what each endpoint does and that it's a layer over the CRUD actions of a database anyway. I'm feeling HTMX for the "frontend". I'm also feeling Meshtastic for the actual hardware comms.
 Anyway, here's the abstract:
 
 ### Abstract
