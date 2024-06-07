@@ -7,7 +7,7 @@ Anyway, here's the abstract:
 ### Abstract
 
 The backend for a Community Sharing Management Software:
-This is the backend API for a Community Sharing Management App, a platform where farms/communities/communes/homesteads/households can log their produce and inventory and see the inventories of other farms in the community. The API is built in Rust using the Rocket web framework, with a Postgres database for storing farm data.
+This is the ~~backend API~~ all-in-1 app for Community Sharing Management, a platform where farms/communities/communes/homesteads/households can log their produce and inventory and see the inventories of other farms in the community. The ~~API~~ app is built in ~~Rust using the Rocket web framework, with a Postgres database for storing farm data~~ zig and sqlite.
 <br />
 <br />
 The point is to share data and subsequently resources to your fellow connected farms, like how organs share, or how teams in companies share resources to fulfill a common goal. A farm might make a request to all its connected members, and the idea is that some other farm comes forth and shares if it can. Extra resources can and should be given to fellow farms rather than hoarding.
@@ -17,7 +17,11 @@ A farm will create a static Auth key for other farms to save and use when queryi
 
 # Installation
 
-TODO. For now just install cargo then cargo run this.
+TODO. There will be binary releases for major architectures coming soon TM.
+
+# Installation
+
+TODO. For now just zig build run from the zig-port folder
 
 # Endpoints
 
